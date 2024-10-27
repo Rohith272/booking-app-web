@@ -1,12 +1,10 @@
-import ThemeModeToggle from "@/components/common/theme-mode-toggle";
+import Footer from "@/components/layout/footer";
 
 export default function Home() {
   return (
     <main>
       home
-      <div>
-        <ThemeModeToggle />
-      </div>
+      <Footer />
     </main>
   );
 }
