@@ -4,7 +4,7 @@ import { Mail, MapPin, Phone } from "lucide-react";
 
 const Footer = () => {
   return (
-    <div className="border-t-2 p-4">
+    <div className="border-t-2 px-4 py-8">
       <div className="mx-auto flex max-w-screen-xl justify-around">
         <div className="size-36 rounded-md border"></div>
         <div className="flex flex-col gap-8">
