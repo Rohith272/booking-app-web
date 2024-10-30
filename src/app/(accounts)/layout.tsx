@@ -4,14 +4,14 @@ import { ReactNode } from "react";
 const AccountsLayout = ({ children }: { children: ReactNode }) => {
   return (
     <main>
-      <div className="relative h-[calc(100dvh)]">
+      <div className="relative min-h-[calc(100dvh)]">
         <img
           src="/images/bg.svg"
-          className="pointer-events-none absolute bottom-0 w-full select-none"
+          className="pointer-events-none absolute bottom-0 hidden w-full select-none md:block"
         />
         {children}
       </div>
-      <Footer/>
+      <Footer />
     </main>
   );
 };

@@ -2,16 +2,14 @@ import CreateOrganizerForm from "./form";
 
 const CreateOrganizerPage = () => {
   return (
-    <main>
-      <div className="">
-        <h1 className="py-8 text-center text-xl font-semibold">
-          Create Organizer
-        </h1>
-        <div className="max-w-screen-lg mx-auto">
-          <CreateOrganizerForm />
-        </div>
+    <div className="overflow-y-auto">
+      <h1 className="py-8 text-center text-xl font-semibold">
+        Create Organizer
+      </h1>
+      <div className="mx-auto max-w-screen-lg">
+        <CreateOrganizerForm />
       </div>
-    </main>
+    </div>
   );
 };
 
