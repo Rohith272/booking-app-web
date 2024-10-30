@@ -4,12 +4,14 @@ import { Mail, MapPin, Phone } from "lucide-react";
 
 const Footer = () => {
   return (
-    <div className="border-t-2 px-4 py-8">
-      <div className="mx-auto flex max-w-screen-xl justify-around">
-        <div className="size-36 rounded-md border"></div>
-        <div className="flex flex-col gap-8">
+    <div className="p-8 mt-10">
+      <div className="mx-auto grid max-w-screen-xl grid-cols-1 justify-around gap-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div className="grid justify-center">
+          <div className="size-36 rounded-md border"></div>
+        </div>
+        <div className="flex flex-col gap-6">
           <div className="flex">
-            <Mail className="mr-4" />
+            <Mail className="mr-4 flex-shrink-0" />
             <Link href={""}>loremipsum@example.com</Link>
           </div>
           <div className="flex">
@@ -51,8 +53,9 @@ const Footer = () => {
           </Link>
         </div>
       </div>
-
-      <ThemeModeToggle />
+      <div className="my-8">
+        <ThemeModeToggle />
+      </div>
     </div>
   );
 };
