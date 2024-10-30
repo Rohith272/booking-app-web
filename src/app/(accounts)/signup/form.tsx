@@ -15,8 +15,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
 import { signupSchema, SignupSchema } from "./schema";
+import { useMutation } from "@tanstack/react-query";
+import { useToast } from "@/lib/hooks/use-toast";
+import { signup } from "./service";
+import { LoadingSpinner } from "@/components/common/loading-spinner";
 
 const SignupForm = () => {
+  const { toast } = useToast();
   const signupForm = useForm<SignupSchema>({
     resolver: zodResolver(signupSchema),
     mode: "onChange",
@@ -24,13 +29,32 @@ const SignupForm = () => {
       firstName: "",
       lastName: "",
       email: "",
-      mobile: "",
+      phone: "",
       password: "",
       confirmPassword: "",
     },
   });
+  const mutation = useMutation({
+    mutationFn: signup,
+  });
   const handleSubmit = (values: SignupSchema) => {
-    console.log(values);
+    mutation.mutate(values, {
+      onSuccess: () => {
+        toast({
+          title: "Signup successful",
+          variant: "default",
+          duration: 3000,
+        });
+        // TODO: redirect to dashboard
+      },
+      onError: (response) => {
+        toast({
+          title: response.message,
+          variant: "destructive",
+          duration: 5000,
+        });
+      },
+    });
   };
   return (
     <Form {...signupForm}>
@@ -83,7 +107,7 @@ const SignupForm = () => {
           />
           <FormField
             control={signupForm.control}
-            name="mobile"
+            name="phone"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Mobile</FormLabel>
@@ -128,8 +152,16 @@ const SignupForm = () => {
             )}
           />
         </div>
-        <Button size={"lg"} type="submit" className="w-72 justify-self-end">
+        <Button
+          size={"lg"}
+          type="submit"
+          className="w-72 justify-self-end"
+          disabled={mutation.isPending}
+        >
           Register
+          {mutation.isPending && (
+            <LoadingSpinner size={"medium"} variant={"primaryForeground"} />
+          )}
         </Button>
       </form>
     </Form>

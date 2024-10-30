@@ -17,7 +17,7 @@ export const signupSchema = z
     email: z.string().email({
       message: "Invalid email format",
     }),
-    mobile: z.string().regex(/^\d{10}$/, {
+    phone: z.string().regex(/^\d{10}$/, {
       message: "Mobile number must be exactly 10 digits",
     }),
     password: z
