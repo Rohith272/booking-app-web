@@ -1,12 +1,26 @@
 # Booking App Web
 
+
+## progress
+```
+login
+signup
+signup/create-organizer
+
+host/events
+host/events/[event]
+
+```
+
+
+## usage
+
 run the development server:
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
----
-
-### - Before committing, use Prettier to format the code.
+## guidelines
+- before committing, use **prettier** to format the code.

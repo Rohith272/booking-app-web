@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 
 const FeatureMenu = () => {
   const pathname = usePathname();
-  console.log(pathname);
   return (
     <div>
       {pathname !== "/host/events" && <Button variant={"ghost"}>Events</Button>}

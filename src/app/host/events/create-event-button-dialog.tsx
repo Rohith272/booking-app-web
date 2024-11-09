@@ -33,28 +33,30 @@ export default function CreateEventDialog() {
       <DialogContent className="sm:max-w-md" hideCloseButton>
         <DialogHeader>
           <DialogTitle>Create new event</DialogTitle>
-          {/* <DialogDescription>Description</DialogDescription> */}
+          <DialogDescription className="sr-only">
+            create new event
+          </DialogDescription>
         </DialogHeader>
-        <div className="flex flex-col sm:flex-row justify-between gap-4">
-          <Card className="flex-grow hover:border-primary hover:bg-accent hover:text-primary">
+        <div className="flex flex-col justify-between gap-4 sm:flex-row">
+          <Card className="flex-grow border-2 hover:border-primary hover:bg-accent hover:text-primary">
             <CardHeader>
-              <CardTitle className="text-3xl">Offline event</CardTitle>
+              <CardTitle className="text-2xl">Offline event</CardTitle>
               {/* <CardDescription></CardDescription> */}
             </CardHeader>
             <CardContent>
-              <MapPinHouse size={50} />
+              <MapPinHouse size={50} className="text-muted-foreground" />
             </CardContent>
             {/* <CardFooter>
                 <p>Manage organizer details</p>
               </CardFooter> */}
           </Card>
-          <Card className="flex-grow hover:border-primary hover:bg-accent hover:text-primary">
+          <Card className="flex-grow border-2 hover:border-primary hover:bg-accent hover:text-primary">
             <CardHeader>
-              <CardTitle className="text-3xl">Online event</CardTitle>
+              <CardTitle className="text-2xl">Online event</CardTitle>
               {/* <CardDescription></CardDescription> */}
             </CardHeader>
             <CardContent>
-              <MonitorSmartphone size={50} />
+              <MonitorSmartphone size={50} className="text-muted-foreground" />
             </CardContent>
             {/* <CardFooter>
                 <p>Manage organizer details</p>

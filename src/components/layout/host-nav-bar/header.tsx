@@ -4,9 +4,9 @@ import NavMobile from "./nav-mobile";
 
 const HostNavBar = () => {
   return (
-    <div className="w-full border-b">
+    <div className="w-full border-b bg-card">
       <div className="flex h-14 items-center justify-between px-4">
-        <div className="text-xl">The Booking App</div>
+        <div className="text-xl">The <span className="text-primary">Booking</span> App</div>
         <NavDesktop />
         <NavMobile />
       </div>

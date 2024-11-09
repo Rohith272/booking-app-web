@@ -1,5 +1,5 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { UserRound } from "lucide-react";
+import { ChevronDown, UserRound } from "lucide-react";
 
 import {
   Popover,
@@ -12,17 +12,18 @@ import ProfileContent from "./profile-content";
 
 const NavDesktop = () => {
   return (
-    <div className="mr-4 hidden md:flex md:gap-4">
+    <div className="hidden md:flex md:gap-4">
       <FeatureMenu />
       <Popover>
-        <PopoverTrigger className="flex h-10 items-center gap-2 px-4 py-2 text-sm">
-          <Avatar className="border-2">
+        <PopoverTrigger className="flex h-10 items-center gap-2 text-sm">
+          <Avatar className="">
             <AvatarImage src="" />
             <AvatarFallback className="">
               <UserRound />
             </AvatarFallback>
           </Avatar>
           Nihad
+          <ChevronDown className="h-3 w-3 text-muted-foreground" />
         </PopoverTrigger>
         <PopoverContent>
           <ProfileContent />
