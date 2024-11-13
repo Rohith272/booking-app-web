@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/lib/providers/theme-provider";
 import ReactQueryProvider from "@/lib/providers/react-query-provider";
 import { Toaster } from "@/components/ui/toaster";
+import AuthProvider from "@/lib/providers/auth-provider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -31,15 +32,17 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <ReactQueryProvider>{children}</ReactQueryProvider>
-        </ThemeProvider>
-        <Toaster />
+        <AuthProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <ReactQueryProvider>{children}</ReactQueryProvider>
+          </ThemeProvider>
+          <Toaster />
+        </AuthProvider>
       </body>
     </html>
   );

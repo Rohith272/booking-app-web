@@ -9,17 +9,11 @@ import {
 import { Check, Dot, SquarePen } from "lucide-react";
 import EventCategories from "./event-categories";
 import EventDetails from "./event-details";
+import { Event } from "@/lib/definitions";
+import Link from "next/link";
 
 type EventCardProps = {
-  event: {
-    id: number;
-    name: string;
-    categories: string[];
-    location: string;
-    date: string;
-    time: string;
-    isPublished: boolean;
-  };
+  event: Event;
 };
 
 const EventCard = (e: EventCardProps) => {
@@ -27,7 +21,9 @@ const EventCard = (e: EventCardProps) => {
     <Card className="flex w-full flex-col hover:shadow-md sm:max-w-96">
       <CardHeader>
         <div className="mb-2 h-44 rounded-lg bg-muted"></div>
-        <CardTitle className="py-1 text-xl">{e.event.name}</CardTitle>
+        <CardTitle className="py-1 text-xl">
+          <Link href={`events/${e.event.id}`}>{e.event.name}</Link>
+        </CardTitle>
         <CardDescription className="flex flex-wrap gap-2">
           <EventCategories categories={e.event.categories} />
         </CardDescription>
