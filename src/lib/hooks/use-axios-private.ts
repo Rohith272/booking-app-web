@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect } from "react";
 import useAuth from "./use-auth";
 import useRefreshToken from "./use-refresh-token";

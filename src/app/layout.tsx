@@ -6,16 +6,21 @@ import ReactQueryProvider from "@/lib/providers/react-query-provider";
 import { Toaster } from "@/components/ui/toaster";
 import AuthProvider from "@/lib/providers/auth-provider";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
+const figtreeSans = localFont({
+  src: "./fonts/FigtreeVF.woff2",
+  variable: "--font-figtree-sans",
   weight: "100 900",
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+// const geistSans = localFont({
+//   src: "./fonts/GeistVF.woff",
+//   variable: "--font-geist-sans",
+//   weight: "100 900",
+// });
+// const geistMono = localFont({
+//   src: "./fonts/GeistMonoVF.woff",
+//   variable: "--font-geist-mono",
+//   weight: "100 900",
+// });
 
 export const metadata: Metadata = {
   title: "The Booking App",
@@ -30,7 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${figtreeSans.className} antialiased`}
       >
         <AuthProvider>
           <ThemeProvider

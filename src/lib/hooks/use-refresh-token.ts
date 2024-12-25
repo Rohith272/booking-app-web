@@ -1,3 +1,5 @@
+"use client";
+
 import { axiosPublic } from "@/lib/api";
 import useAuth from "./use-auth";
 
