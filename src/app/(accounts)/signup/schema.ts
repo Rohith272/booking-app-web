@@ -8,12 +8,7 @@ export const signupSchema = z
       .max(20, {
         message: "First name should not contain more than 20 character",
       }),
-    lastName: z
-      .string()
-      .min(1, { message: "Last name should contain atleast 1 character" })
-      .max(20, {
-        message: "Last name should not contain more than 20 character",
-      }),
+    lastName: z.string().optional(),
     email: z.string().email({
       message: "Invalid email format",
     }),

@@ -1,7 +1,13 @@
 "use client";
 
 import { useForm } from "react-hook-form";
+import { useMutation } from "@tanstack/react-query";
+import { useToast } from "@/lib/hooks/use-toast";
+import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
+
+import { loginSchema, LoginSchema } from "./schema";
+import { login } from "./service";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -14,20 +20,46 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-
-import { loginSchema, LoginSchema } from "./schema";
+import { LoadingSpinner } from "@/components/common/loading-spinner";
+import useAuth from "@/lib/hooks/use-auth";
 
 const LoginForm = () => {
+  const { setAccessToken } = useAuth();
+  const { toast } = useToast();
+  const router = useRouter();
   const loginForm = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
     mode: "onChange",
     defaultValues: {
-      emailOrMobile: "",
+      username: "",
       password: "",
     },
   });
+  const mutation = useMutation({
+    mutationFn: login,
+  });
   const handleSubmit = (values: LoginSchema) => {
-    console.log(values);
+    mutation.mutate(values, {
+      onSuccess: (data) => {
+        console.log(data.data)
+        console.log(data.data.accessToken);
+        setAccessToken(data.data.accessToken);
+        toast({
+          title: "Login successful",
+          variant: "default",
+          duration: 3000,
+        });
+
+        router.push("/host/events");
+      },
+      onError: (response) => {
+        toast({
+          title: response.message,
+          variant: "destructive",
+          duration: 5000,
+        });
+      },
+    });
   };
   return (
     <div className="">
@@ -39,7 +71,7 @@ const LoginForm = () => {
           <div className="flex flex-col gap-4">
             <FormField
               control={loginForm.control}
-              name="emailOrMobile"
+              name="username"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Email or Mobile</FormLabel>
@@ -66,8 +98,16 @@ const LoginForm = () => {
               )}
             />
           </div>
-          <Button size={"lg"} type="submit" className="w-full">
-            Register
+          <Button
+            size={"lg"}
+            type="submit"
+            className="w-full"
+            disabled={mutation.isPending}
+          >
+            Login
+            {mutation.isPending && (
+              <LoadingSpinner size={"medium"} variant={"primaryForeground"} />
+            )}
           </Button>
         </form>
       </Form>

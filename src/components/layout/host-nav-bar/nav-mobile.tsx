@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/sheet";
 import { CircleChevronDown } from "lucide-react";
 import { useState } from "react";
-import ProfileContent from "./profile-content";
+import ProfileContent from "./profile-content/profile-content";
 
 const NavMobile = () => {
   const [open, setOpen] = useState(false);

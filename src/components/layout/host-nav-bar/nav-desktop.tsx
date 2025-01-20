@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/popover";
 
 import FeatureMenu from "./feature-menu";
-import ProfileContent from "./profile-content";
+import ProfileContent from "./profile-content/profile-content";
 
 const NavDesktop = () => {
   return (

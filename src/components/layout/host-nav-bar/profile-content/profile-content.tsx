@@ -7,26 +7,18 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import ThemeModeToggle from "@/components/common/theme-mode-toggle";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { ChevronRight, LogOut } from "lucide-react";
 import React from "react";
 import Link from "next/link";
+import LogoutComponent from "./logout/logout";
+import Me from "./me";
 
 const ProfileContent = () => {
   return (
     <div className="text-sm">
+      <Me />
       <Card>
         <CardHeader>
           <CardDescription>Organizer</CardDescription>
@@ -56,26 +48,7 @@ const ProfileContent = () => {
         Theme <ThemeModeToggle />
       </div>
       <Separator className="my-2" />
-      <AlertDialog>
-        <AlertDialogTrigger className="inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded-md border border-input bg-background px-4 py-2 text-sm font-medium ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0">
-          <LogOut />
-          Signout
-        </AlertDialogTrigger>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>
-              Are you sure you want to sign out?
-            </AlertDialogTitle>
-            <AlertDialogDescription>{/* Description */}</AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction className="bg-destructive text-destructive-foreground hover:bg-destructive">
-              Signout
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+      <LogoutComponent />
     </div>
   );
 };

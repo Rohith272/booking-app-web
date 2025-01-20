@@ -1,5 +1,13 @@
 "use client";
 
+import { useForm } from "react-hook-form";
+import { useMutation } from "@tanstack/react-query";
+import { useToast } from "@/lib/hooks/use-toast";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+import { signupSchema, SignupSchema } from "./schema";
+import { signup } from "./service";
+
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -11,13 +19,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-
-import { signupSchema, SignupSchema } from "./schema";
-import { useMutation } from "@tanstack/react-query";
-import { useToast } from "@/lib/hooks/use-toast";
-import { signup } from "./service";
 import { LoadingSpinner } from "@/components/common/loading-spinner";
 
 const SignupForm = () => {

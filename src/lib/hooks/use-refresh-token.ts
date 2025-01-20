@@ -6,7 +6,7 @@ import useAuth from "./use-auth";
 const useRefreshToken = () => {
   const { setAccessToken } = useAuth();
   const refresh = async () => {
-    const response = await axiosPublic.get("/refresh-token", {
+    const response = await axiosPublic.get("/api/v1/hosts/refresh", {
       withCredentials: true,
     });
     // TODO: set access token
