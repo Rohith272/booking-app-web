@@ -15,8 +15,15 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+import { useMutation } from "@tanstack/react-query";
+import { createOrganizer } from "./service";
+import { toast } from "@/lib/hooks/use-toast";
+import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
 
 const CreateOrganizerForm = () => {
+  const router = useRouter();
+  
   const createOrganizerForm = useForm<CreateOrganizerSchema>({
     resolver: zodResolver(createOrganizerSchema),
     mode: "all",
@@ -31,9 +38,42 @@ const CreateOrganizerForm = () => {
       x: "",
     },
   });
+
   const logoRef = createOrganizerForm.register("logo");
+  // console.log('logoref=',logoRef);
+
+  const mutation = useMutation({
+      mutationFn: createOrganizer,
+    });
+
+    
   const handleSubmit = (values: CreateOrganizerSchema) => {
-    console.log(values);
+    // const logoFile = values.logo instanceof File ? values.logo : undefined;
+    const logoFile = 'testing'
+    // console.log(logoFile);
+
+    mutation.mutate({ ...values, logoFile }, {
+      onSuccess: (res) => {
+        toast({
+          title: "Organization create successful",
+          variant: "default",
+          duration: 3000,
+        });
+
+        console.log(res)
+        // TODO: redirect to dashboard
+        // router.push("/signup");
+
+        
+      },
+      onError: (response) => {
+        toast({
+          title: response.message,
+          variant: "destructive",
+          duration: 5000,
+        });
+      },
+    });
   };
   return (
     <Form {...createOrganizerForm}>
@@ -173,6 +213,7 @@ const CreateOrganizerForm = () => {
         <Button
           size={"lg"}
           className="float-right w-full md:w-[calc(33.3333%-0.75rem)]"
+          type={"submit"}
         >
           Save
         </Button>

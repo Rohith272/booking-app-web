@@ -5,9 +5,9 @@ export const login = async (values: LoginSchema) => {
     `${process.env.NEXT_PUBLIC_BASE_API_URL}/api/v1/hosts/login`,
     {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json"},
       body: JSON.stringify(values),
-      credentials: "include",
+      
     },
   );
   // const data = await response.json();

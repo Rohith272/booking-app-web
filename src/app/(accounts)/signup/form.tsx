@@ -7,7 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { signupSchema, SignupSchema } from "./schema";
 import { signup } from "./service";
-
+import Cookies from "js-cookie";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -20,8 +20,11 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { LoadingSpinner } from "@/components/common/loading-spinner";
+import { useRouter } from "next/navigation";
 
 const SignupForm = () => {
+    const router = useRouter();
+  
   const { toast } = useToast();
   const signupForm = useForm<SignupSchema>({
     resolver: zodResolver(signupSchema),
@@ -40,13 +43,18 @@ const SignupForm = () => {
   });
   const handleSubmit = (values: SignupSchema) => {
     mutation.mutate(values, {
-      onSuccess: () => {
+      onSuccess: (res) => {
         toast({
           title: "Signup successful",
           variant: "default",
           duration: 3000,
         });
         // TODO: redirect to dashboard
+        Cookies.set('accessToken', res.data.accessToken);
+        Cookies.set('refToken', res.data.refreshToken);
+        router.push("/signup/create-organizer");
+
+        
       },
       onError: (response) => {
         toast({

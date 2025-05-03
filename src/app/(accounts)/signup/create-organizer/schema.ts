@@ -7,6 +7,7 @@ const ACCEPTED_IMAGE_MIME_TYPES = [
   "image/png",
   "image/webp",
 ];
+
 export const createOrganizerSchema = z.object({
   name: z.string().min(1, { message: "Required" }),
   website: z.string().min(4, { message: "Please enter at least 4 characters" }),

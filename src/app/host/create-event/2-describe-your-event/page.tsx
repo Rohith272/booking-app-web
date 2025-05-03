@@ -40,21 +40,21 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosPrivate from "@/lib/hooks/use-axios-private";
 import { MainCategory } from "@/lib/definitions";
 
-// const mainCateogriesOptions = [
-//   { label: "Music", value: "music" },
-//   { label: "Festival", value: "festival" },
-//   { label: "Expo", value: "expo" },
-//   { label: "Workshop", value: "workshop" },
-//   { label: "Conference", value: "conference" },
-// ] as const;
+const mainCateogriesOptions = [
+  { label: "Music", value: "music" },
+  { label: "Festival", value: "festival" },
+  { label: "Expo", value: "expo" },
+  { label: "Workshop", value: "workshop" },
+  { label: "Conference", value: "conference" },
+] as const;
 
-// const subCategoriesOptions = [
-//   { label: "Music", value: "music" },
-//   { label: "Festival", value: "festival" },
-//   { label: "Expo", value: "expo" },
-//   { label: "Workshop", value: "workshop" },
-//   { label: "Conference", value: "conference" },
-// ];
+const subCategoriesOptions = [
+  { label: "Music", value: "music" },
+  { label: "Festival", value: "festival" },
+  { label: "Expo", value: "expo" },
+  { label: "Workshop", value: "workshop" },
+  { label: "Conference", value: "conference" },
+];
 
 const Page = () => {
   const api = useAxiosPrivate();

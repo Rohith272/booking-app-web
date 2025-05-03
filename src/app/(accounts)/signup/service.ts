@@ -15,3 +15,4 @@ export const signup = async (values: SignupSchema) => {
   }
   return response.json();
 };
+
